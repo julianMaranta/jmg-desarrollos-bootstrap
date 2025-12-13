@@ -11,6 +11,9 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faChalkboardUser, faGraduationCap, faSchool, faCertificate, faUser } from '@fortawesome/free-solid-svg-icons';
 import router from './router/routes'; // Asegúrate de que la ruta sea correcta
+// Importar Bootstrap (si usas build tools)
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 
 // Configura Amplify con los outputs

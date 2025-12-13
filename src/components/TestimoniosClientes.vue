@@ -1,182 +1,201 @@
 <template>
-  <section id="testimonios" class="py-20 bg-gradient-to-br from-white via-blue-50 to-blue-100 relative overflow-hidden w-full flex justify-center items-center">
+  <section id="testimonios" class="py-5 bg-light position-relative overflow-hidden w-100 d-flex justify-content-center align-items-center">
     <!-- Background Elements -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full animate-float-delayed blur-3xl"></div>
-      <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-400/5 rounded-full animate-float blur-3xl"></div>
+    <div class="position-absolute top-0 start-0 w-100 h-100 overflow-hidden">
+      <div class="position-absolute top-0 end-0 bg-primary bg-opacity-5 rounded-circle animate-float-delayed blur-3" 
+           style="width: 384px; height: 384px;"></div>
+      <div class="position-absolute bottom-0 start-0 bg-primary bg-opacity-5 rounded-circle animate-float blur-3"
+           style="width: 384px; height: 384px;"></div>
     </div>
 
-    <div class="w-full max-w-7xl mx-auto px-4 relative z-10 flex flex-col items-center justify-center">
+    <div class="container position-relative z-3 d-flex flex-column align-items-center justify-content-center">
       <!-- Section Header -->
-      <div class="text-center mb-20 w-full flex flex-col items-center">
-        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-blue-200 shadow-lg justify-center">
-          <div class="w-2 h-2 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full mr-3 animate-pulse"></div>
-          <span class="text-sm font-semibold text-gray-600">💬 LO QUE DICEN NUESTROS CLIENTES</span>
+      <div class="text-center mb-5 w-100 d-flex flex-column align-items-center">
+        <div class="d-inline-flex align-items-center bg-white bg-opacity-80 rounded-pill px-4 py-2 mb-4 border border-primary border-opacity-20 shadow justify-content-center"
+             style="backdrop-filter: blur(4px);">
+          <div class="bg-primary rounded-circle me-2 animate-pulse" style="width: 8px; height: 8px;"></div>
+          <span class="small fw-semibold text-secondary">💬 LO QUE DICEN NUESTROS CLIENTES</span>
         </div>
 
-        <div class="h-5 w-full"></div>
+        <div class="h-3 w-100"></div>
         
-        <h2 class="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-gray-800 via-blue-800 to-blue-900 bg-clip-text text-transparent text-center w-full">
+        <h2 class="display-4 fw-black mb-4 text-primary text-center w-100">
           Historias de Éxito
         </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed text-center">
+        <p class="h5 text-secondary mx-auto lead text-center">
           Más de 200 empresas confían en nosotros para transformar su presencia digital y alcanzar nuevos niveles de crecimiento
         </p>
       </div>
 
-      <div class="h-10 w-full"></div>
+      <div class="h-4 w-100"></div>
 
       <!-- Testimonials Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 w-full justify-items-center">
+      <div class="row g-4 mb-5 w-100 justify-content-center">
         <!-- Testimonio 1 -->
-        <div class="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 border border-blue-200/50 w-full max-w-sm flex flex-col items-center text-center">
-          <!-- Header -->
-          <div class="flex flex-col items-center mb-6 w-full">
-            <div class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center mb-4 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-              <span class="text-white font-bold text-xl">MR</span>
+        <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+          <div class="group bg-white bg-opacity-80 rounded-4 p-4 shadow-lg transition-all duration-500 border border-primary border-opacity-25 w-100 d-flex flex-column align-items-center text-center"
+               style="max-width: 380px; backdrop-filter: blur(4px);">
+            <!-- Header -->
+            <div class="d-flex flex-column align-items-center mb-4 w-100">
+              <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center mb-3 transition-all duration-500 group-hover-scale-rotate"
+                   style="width: 64px; height: 64px;">
+                <span class="text-white fw-bold fs-5">MR</span>
+              </div>
+              <div class="text-center w-100">
+                <h4 class="fw-black text-dark fs-5">María Rodríguez</h4>
+                <p class="text-secondary small">Dueña de Boutique Elegante</p>
+              </div>
             </div>
-            <div class="text-center w-full">
-              <h4 class="font-black text-gray-800 text-lg">María Rodríguez</h4>
-              <p class="text-gray-500 text-sm">Dueña de Boutique Elegante</p>
+            
+            <!-- Rating -->
+            <div class="d-flex mb-3 justify-content-center w-100">
+              <span v-for="star in 5" :key="star" class="text-warning fs-6">⭐</span>
             </div>
-          </div>
-          
-          <!-- Rating -->
-          <div class="flex mb-4 justify-center w-full">
-            <span v-for="star in 5" :key="star" class="text-yellow-400 text-lg">⭐</span>
-          </div>
-          
-          <!-- Testimonial Text -->
-          <p class="text-gray-600 leading-relaxed italic mb-6 w-full text-center">
-            "JMG Desarrollos transformó completamente mi negocio. Mi sitio web no solo es hermoso, sino que ha aumentado mis ventas online en un 300%. El equipo es profesional y muy comprometido con el éxito del proyecto."
-          </p>
-          
-          <!-- Results -->
-          <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-4 border border-blue-200 w-full">
-            <div class="flex justify-between items-center text-sm">
-              <span class="text-blue-600 font-semibold">Resultados:</span>
-              <span class="text-green-600 font-black">+300% Ventas</span>
+            
+            <!-- Testimonial Text -->
+            <p class="text-secondary lh-base fst-italic mb-4 w-100 text-center">
+              "JMG Desarrollos transformó completamente mi negocio. Mi sitio web no solo es hermoso, sino que ha aumentado mis ventas online en un 300%. El equipo es profesional y muy comprometido con el éxito del proyecto."
+            </p>
+            
+            <!-- Results -->
+            <div class="bg-primary bg-opacity-10 rounded-3 p-3 border border-primary border-opacity-25 w-100">
+              <div class="d-flex justify-content-between align-items-center small">
+                <span class="text-primary fw-semibold">Resultados:</span>
+                <span class="text-success fw-black">+300% Ventas</span>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Testimonio 2 -->
-        <div class="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 border border-blue-200/50 w-full max-w-sm flex flex-col items-center text-center">
-          <!-- Header -->
-          <div class="flex flex-col items-center mb-6 w-full">
-            <div class="w-16 h-16 bg-gradient-to-br from-blue-700 to-blue-900 rounded-2xl flex items-center justify-center mb-4 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-              <span class="text-white font-bold text-xl">CP</span>
+        <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+          <div class="group bg-white bg-opacity-80 rounded-4 p-4 shadow-lg transition-all duration-500 border border-primary border-opacity-25 w-100 d-flex flex-column align-items-center text-center"
+               style="max-width: 380px; backdrop-filter: blur(4px);">
+            <!-- Header -->
+            <div class="d-flex flex-column align-items-center mb-4 w-100">
+              <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center mb-3 transition-all duration-500 group-hover-scale-rotate"
+                   style="width: 64px; height: 64px; background: linear-gradient(135deg, #0a58ca, #084298);">
+                <span class="text-white fw-bold fs-5">CP</span>
+              </div>
+              <div class="text-center w-100">
+                <h4 class="fw-black text-dark fs-5">Carlos Pérez</h4>
+                <p class="text-secondary small">Director de TechSolutions</p>
+              </div>
             </div>
-            <div class="text-center w-full">
-              <h4 class="font-black text-gray-800 text-lg">Carlos Pérez</h4>
-              <p class="text-gray-500 text-sm">Director de TechSolutions</p>
+            
+            <!-- Rating -->
+            <div class="d-flex mb-3 justify-content-center w-100">
+              <span v-for="star in 5" :key="star" class="text-warning fs-6">⭐</span>
             </div>
-          </div>
-          
-          <!-- Rating -->
-          <div class="flex mb-4 justify-center w-full">
-            <span v-for="star in 5" :key="star" class="text-yellow-400 text-lg">⭐</span>
-          </div>
-          
-          <!-- Testimonial Text -->
-          <p class="text-gray-600 leading-relaxed italic mb-6 w-full text-center">
-            "Trabajamos con JMG para nuestro sitio corporativo y los resultados superaron expectativas. El proceso fue transparente, la comunicación excelente y la entrega fue puntual. Definitivamente los recomiendo."
-          </p>
-          
-          <!-- Results -->
-          <div class="bg-gradient-to-r from-blue-100 to-blue-200 rounded-2xl p-4 border border-blue-300 w-full">
-            <div class="flex justify-between items-center text-sm">
-              <span class="text-blue-600 font-semibold">Resultados:</span>
-              <span class="text-green-600 font-black">+150% Leads</span>
+            
+            <!-- Testimonial Text -->
+            <p class="text-secondary lh-base fst-italic mb-4 w-100 text-center">
+              "Trabajamos con JMG para nuestro sitio corporativo y los resultados superaron expectativas. El proceso fue transparente, la comunicación excelente y la entrega fue puntual. Definitivamente los recomiendo."
+            </p>
+            
+            <!-- Results -->
+            <div class="bg-primary bg-opacity-15 rounded-3 p-3 border border-primary border-opacity-50 w-100">
+              <div class="d-flex justify-content-between align-items-center small">
+                <span class="text-primary fw-semibold">Resultados:</span>
+                <span class="text-success fw-black">+150% Leads</span>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Testimonio 3 -->
-        <div class="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 border border-blue-200/50 w-full max-w-sm flex flex-col items-center text-center">
-          <!-- Header -->
-          <div class="flex flex-col items-center mb-6 w-full">
-            <div class="w-16 h-16 bg-gradient-to-br from-blue-800 to-blue-950 rounded-2xl flex items-center justify-center mb-4 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-              <span class="text-white font-bold text-xl">AG</span>
+        <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+          <div class="group bg-white bg-opacity-80 rounded-4 p-4 shadow-lg transition-all duration-500 border border-primary border-opacity-25 w-100 d-flex flex-column align-items-center text-center"
+               style="max-width: 380px; backdrop-filter: blur(4px);">
+            <!-- Header -->
+            <div class="d-flex flex-column align-items-center mb-4 w-100">
+              <div class="bg-dark rounded-3 d-flex align-items-center justify-content-center mb-3 transition-all duration-500 group-hover-scale-rotate"
+                   style="width: 64px; height: 64px;">
+                <span class="text-white fw-bold fs-5">AG</span>
+              </div>
+              <div class="text-center w-100">
+                <h4 class="fw-black text-dark fs-5">Ana García</h4>
+                <p class="text-secondary small">Fundadora de Wellness Center</p>
+              </div>
             </div>
-            <div class="text-center w-full">
-              <h4 class="font-black text-gray-800 text-lg">Ana García</h4>
-              <p class="text-gray-500 text-sm">Fundadora de Wellness Center</p>
+            
+            <!-- Rating -->
+            <div class="d-flex mb-3 justify-content-center w-100">
+              <span v-for="star in 5" :key="star" class="text-warning fs-6">⭐</span>
             </div>
-          </div>
-          
-          <!-- Rating -->
-          <div class="flex mb-4 justify-center w-full">
-            <span v-for="star in 5" :key="star" class="text-yellow-400 text-lg">⭐</span>
-          </div>
-          
-          <!-- Testimonial Text -->
-          <p class="text-gray-600 leading-relaxed italic mb-6 w-full text-center">
-            "Increíble experiencia de principio a fin. Mi sitio web captura perfectamente la esencia de mi marca y ha sido clave para atraer nuevos clientes. El soporte post-venta es excepcional y siempre están disponibles."
-          </p>
-          
-          <!-- Results -->
-          <div class="bg-gradient-to-r from-blue-200 to-blue-300 rounded-2xl p-4 border border-blue-400 w-full">
-            <div class="flex justify-between items-center text-sm">
-              <span class="text-blue-600 font-semibold">Resultados:</span>
-              <span class="text-green-600 font-black">+200% Clientes</span>
+            
+            <!-- Testimonial Text -->
+            <p class="text-secondary lh-base fst-italic mb-4 w-100 text-center">
+              "Increíble experiencia de principio a fin. Mi sitio web captura perfectamente la esencia de mi marca y ha sido clave para atraer nuevos clientes. El soporte post-venta es excepcional y siempre están disponibles."
+            </p>
+            
+            <!-- Results -->
+            <div class="bg-primary bg-opacity-20 rounded-3 p-3 border border-primary border-opacity-75 w-100">
+              <div class="d-flex justify-content-between align-items-center small">
+                <span class="text-primary fw-semibold">Resultados:</span>
+                <span class="text-success fw-black">+200% Clientes</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="h-10 w-full"></div>
+      <div class="h-4 w-100"></div>
 
-     <!-- Client Logos -->
-<div class="text-center w-full flex flex-col items-center">
-  <h3 class="text-2xl font-black text-gray-800 mb-12 bg-gradient-to-r from-gray-800 to-blue-800 bg-clip-text text-transparent text-center w-full">
-    Empresas que Confían en Nosotros
-  </h3>
-  <div class="h-5 w-full"></div>
-  <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-60 justify-items-center w-full">
-    <div v-for="i in 6" :key="i" 
-         class="bg-white/80 backdrop-blur-sm rounded-2xl h-24 flex flex-col items-center justify-center shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-110 group border border-blue-200/50 w-full max-w-40">
-      <div class="text-center w-full flex flex-col items-center justify-center">
-        <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center mb-2 transform transition-all duration-500 group-hover:rotate-12">
-          <span class="text-white font-bold text-sm flex items-center justify-center w-full">C{{ i }}</span>
+      <!-- Client Logos -->
+      <div class="text-center w-100 d-flex flex-column align-items-center">
+        <h3 class="h2 fw-black text-dark mb-4 text-center w-100">
+          Empresas que Confían en Nosotros
+        </h3>
+        <div class="h-3 w-100"></div>
+        <div class="row g-4 align-items-center w-100 opacity-75 justify-content-center">
+          <div v-for="i in 6" :key="i" 
+               class="col-6 col-md-4 col-lg-2 d-flex justify-content-center">
+            <div class="bg-white bg-opacity-80 rounded-3 d-flex flex-column align-items-center justify-content-center shadow transition-all duration-500 hover-scale group border border-primary border-opacity-25 w-100"
+                 style="height: 96px; backdrop-filter: blur(4px); max-width: 160px;">
+              <div class="text-center w-100 d-flex flex-column align-items-center justify-content-center">
+                <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center mb-1 transition-all duration-500 group-hover-rotate"
+                     style="width: 40px; height: 40px;">
+                  <span class="text-white fw-bold small d-flex align-items-center justify-content-center w-100">C{{ i }}</span>
+                </div>
+                <span class="text-secondary fw-semibold small text-center w-100">Cliente {{ i }}</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <span class="text-gray-600 font-semibold text-sm text-center w-full">Cliente {{ i }}</span>
       </div>
-    </div>
-  </div>
-</div>
 
-      <div class="h-10 w-full"></div>
+      <div class="h-4 w-100"></div>
 
-     <!-- CTA Section -->
-<div class="text-center mt-20 w-full">
-  <div class="bg-gradient-to-r from-blue-500/10 to-blue-600/10 rounded-3xl p-12 border border-blue-500/20 w-full flex flex-col items-center justify-center">
-    <h3 class="text-3xl md:text-4xl font-black text-gray-800 mb-6 text-center w-full">
-      ¿Listo para ser Nuestro Próximo Caso de Éxito?
-    </h3>
-    
-    <div class="flex items-center justify-center w-full mb-8">
-      <p class="text-xl text-gray-600 max-w-2xl text-center leading-relaxed">
-        Únete a las empresas que ya experimentaron la transformación digital con JMG Desarrollos.
-      </p>
-    </div>
+      <!-- CTA Section -->
+      <div class="text-center mt-5 w-100">
+        <div class="bg-primary bg-opacity-10 rounded-4 p-5 border border-primary border-opacity-20 w-100 d-flex flex-column align-items-center justify-content-center">
+          <h3 class="h1 fw-black text-dark mb-4 text-center w-100">
+            ¿Listo para ser Nuestro Próximo Caso de Éxito?
+          </h3>
+          
+          <div class="d-flex align-items-center justify-content-center w-100 mb-4">
+            <p class="fs-5 text-secondary text-center lh-base">
+              Únete a las empresas que ya experimentaron la transformación digital con JMG Desarrollos.
+            </p>
+          </div>
 
-    <div class="h-5 w-full"></div>
+          <div class="h-3 w-100"></div>
 
-    <div class="flex justify-center w-full">
-      <button 
-        @click="scrollToSection('contacto')"
-        class="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-black py-4 px-12 rounded-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-2xl hover:shadow-3xl text-lg relative overflow-hidden group"
-      >
-        <span class="relative z-10 flex items-center justify-center">
-          Unirme al Éxito
-          <span class="ml-3 transform transition-transform duration-500 group-hover:translate-x-2">🎉</span>
-        </span>
-        <div class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-      </button>
-    </div>
-  </div>
-</div>
+          <div class="d-flex justify-content-center w-100">
+            <button 
+              @click="scrollToSection('contacto')"
+              class="btn btn-primary btn-lg fw-black py-3 px-5 rounded-3 transition-all duration-500 border-0 position-relative overflow-hidden"
+            >
+              <span class="position-relative z-2 d-flex align-items-center justify-content-center">
+                Unirme al Éxito
+                <span class="ms-2 transition-all duration-500 group-hover-translate">🎉</span>
+              </span>
+              <div class="position-absolute top-0 start-0 w-100 h-100 bg-white bg-opacity-20 skew-x-12 translate-x-n100 transition-transform duration-1000"></div>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -189,3 +208,170 @@ const scrollToSection = (sectionId) => {
   }
 };
 </script>
+
+<style scoped>
+/* Estilos personalizados para mantener las animaciones y efectos */
+
+/* Animaciones */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(3deg);
+  }
+  66% {
+    transform: translateY(-10px) rotate(-3deg);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-15px) rotate(-2deg);
+  }
+  66% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 5s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Efectos blur personalizados */
+.blur-3 {
+  filter: blur(12px);
+}
+
+/* Efectos hover personalizados */
+.group:hover .group-hover-scale-rotate {
+  transform: scale(1.1) rotate(6deg);
+}
+
+.group:hover .group-hover-rotate {
+  transform: rotate(12deg);
+}
+
+.group:hover .hover-scale {
+  transform: scale(1.1);
+}
+
+.group:hover .group-hover-translate {
+  transform: translateX(0.5rem);
+}
+
+/* Utilidades de transición */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.duration-500 {
+  transition-duration: 500ms;
+}
+
+/* Transform utilities */
+.skew-x-12 {
+  transform: skewX(-12deg);
+}
+
+.translate-x-n100 {
+  transform: translateX(-100%);
+}
+
+/* Bordes redondeados personalizados */
+.rounded-4 {
+  border-radius: 1rem;
+}
+
+.rounded-3 {
+  border-radius: 0.75rem;
+}
+
+/* Utilidades de backdrop */
+.bg-opacity-80 {
+  --bs-bg-opacity: 0.8;
+}
+
+.bg-opacity-10 {
+  --bs-bg-opacity: 0.1;
+}
+
+.bg-opacity-15 {
+  --bs-bg-opacity: 0.15;
+}
+
+.bg-opacity-20 {
+  --bs-bg-opacity: 0.2;
+}
+
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 2.5rem !important;
+  }
+  
+  .h1 {
+    font-size: 2rem !important;
+  }
+  
+  .h2 {
+    font-size: 1.75rem !important;
+  }
+}
+
+/* Mejoras de espaciado para móviles */
+@media (max-width: 576px) {
+  .py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  
+  .mb-5 {
+    margin-bottom: 3rem !important;
+  }
+}
+
+/* Efectos de hover para botones */
+.btn:hover .translate-x-n100 {
+  transform: translateX(100%) skewX(-12deg) !important;
+}
+
+/* Altura de línea mejorada */
+.lh-base {
+  line-height: 1.6;
+}
+
+/* Opacidad para logos de clientes */
+.opacity-75 {
+  opacity: 0.75;
+}
+
+/* Efecto de elevación en hover para tarjetas */
+.group:hover {
+  transform: translateY(-1rem);
+}
+</style>

@@ -1,143 +1,150 @@
 <template>
-  <section class="py-12 bg-gradient-to-br from-white via-blue-50 to-blue-100 relative overflow-hidden w-full flex justify-center">
+  <section class="py-5 bg-light position-relative overflow-hidden w-100 d-flex justify-content-center">
     <!-- Background Elements -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full animate-float-delayed blur-3xl"></div>
-      <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-400/5 rounded-full animate-float blur-3xl"></div>
+    <div class="position-absolute top-0 start-0 w-100 h-100 overflow-hidden">
+      <div class="position-absolute top-0 end-0 bg-primary bg-opacity-5 rounded-circle animate-float-delayed blur-3" 
+           style="width: 384px; height: 384px;"></div>
+      <div class="position-absolute bottom-0 start-0 bg-primary bg-opacity-5 rounded-circle animate-float blur-3"
+           style="width: 384px; height: 384px;"></div>
     </div>
 
-    <div class="w-full max-w-7xl mx-auto px-4 relative z-10 flex flex-col items-center">
+    <div class="container position-relative z-3 d-flex flex-column align-items-center">
       <!-- Section Header -->
-      <div class="text-center mb-16 w-full flex flex-col items-center">
+      <div class="text-center mb-5 w-100 d-flex flex-column align-items-center">
         <!-- MÁS ESPACIO DEBAJO DE "🎯 POR QUÉ ELEGIRNOS" -->
-        <div class="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-16 border border-blue-200 shadow-lg">
-          <div class="w-2 h-2 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full mr-3 animate-pulse"></div>
-          <span class="text-sm font-semibold text-gray-600">🎯 POR QUÉ ELEGIRNOS</span>
+        <div class="d-inline-flex align-items-center bg-white bg-opacity-80 rounded-pill px-4 py-2 mb-5 border border-primary border-opacity-20 shadow">
+          <div class="bg-primary rounded-circle me-2 animate-pulse" style="width: 8px; height: 8px;"></div>
+          <span class="small fw-semibold text-secondary">🎯 POR QUÉ ELEGIRNOS</span>
         </div>
 
-        <!-- ESPACIO EXTRA ANTES DE TECHNOLOGY & PROMISE -->
-      <div class="h-5 w-full"></div>
+        <!-- ESPACIO EXTRA ANTES DEL TÍTULO -->
+        <div class="h-3 w-100"></div>
         
-        <h2 class="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-gray-800 via-blue-800 to-blue-900 bg-clip-text text-transparent text-center w-full h-full">
+        <h2 class="display-4 fw-black mb-4 text-primary text-center w-100">
           Ventajas Exclusivas
         </h2>
-        <!-- ESPACIO AUMENTADO DEBAJO DE ESTE TÍTULO - mb-20 cambiado a mb-24 -->
-        <p class="text-xl text-gray-600 max-w-3xl leading-relaxed text-center mx-auto mb-24">
-          No solo desarrollamos sitios web, creamos <span class="font-semibold text-blue-600">experiencias digitales</span> que impulsan tu negocio
+        <!-- ESPACIO AUMENTADO DEBAJO DEL TÍTULO -->
+        <p class="h5 text-secondary mx-auto lead text-center mb-5">
+          No solo desarrollamos sitios web, creamos <span class="fw-semibold text-primary">experiencias digitales</span> que impulsan tu negocio
         </p>
       </div>
 
-      <!-- ESPACIO EXTRA ANTES DE TECHNOLOGY & PROMISE -->
-      <div class="h-10 w-full"></div>
+      <!-- ESPACIO EXTRA ANTES DE FEATURES -->
+      <div class="h-4 w-100"></div>
 
       <!-- Features Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16 w-full justify-items-center">
+      <div class="row g-4 mb-5 w-100 justify-content-center">
         <div v-for="(feature, index) in features" :key="index" 
-             class="group text-center p-8 bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-4 border border-blue-200/50 w-full max-w-xs flex flex-col items-center">
-          <!-- Icon Container -->
-          <div class="relative mb-6 flex justify-center">
-            <div class="w-20 h-20 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl flex items-center justify-center transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-              <span class="text-2xl text-white flex items-center justify-center w-full h-full">{{ feature.icon }}</span>
+             class="col-12 col-md-6 col-lg-3 d-flex justify-content-center">
+          <div class="group text-center p-4 bg-white bg-opacity-80 rounded-4 shadow-lg transition-all duration-500 border border-primary border-opacity-25 w-100 d-flex flex-column align-items-center"
+               style="max-width: 320px; backdrop-filter: blur(4px);">
+            <!-- Icon Container -->
+            <div class="position-relative mb-4 d-flex justify-content-center">
+              <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center transition-all duration-500 group-hover-scale-rotate"
+                   style="width: 80px; height: 80px;">
+                <span class="text-white fs-3 d-flex align-items-center justify-content-center w-100 h-100">{{ feature.icon }}</span>
+              </div>
+              <div class="position-absolute top-n2 start-n2 w-100 h-100 bg-primary bg-opacity-20 rounded-3 blur-2 opacity-0 transition-opacity duration-500 group-hover-opacity"></div>
             </div>
-            <div class="absolute -inset-4 bg-gradient-to-br from-blue-600/20 to-blue-800/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <!-- Content -->
+            <h3 class="h4 fw-black text-dark mb-3 text-center">{{ feature.title }}</h3>
+            <p class="text-secondary lh-base text-center flex-grow-1">
+              {{ feature.description }}
+            </p>
+            
+            <!-- Hover Effect Line -->
+            <div class="w-0 h-1 bg-primary rounded-pill mt-4 transition-all duration-500 group-hover-line"></div>
           </div>
-          
-          <!-- Content -->
-          <h3 class="text-xl font-black text-gray-800 mb-4 text-center">{{ feature.title }}</h3>
-          <p class="text-gray-600 leading-relaxed text-center">
-            {{ feature.description }}
-          </p>
-          
-          <!-- Hover Effect Line -->
-          <div class="w-0 h-1 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full mt-6 transition-all duration-500 group-hover:w-16"></div>
         </div>
       </div>
 
       <!-- ESPACIO EXTRA ANTES DE TECHNOLOGY & PROMISE -->
-      <div class="h-16 w-full"></div>
+      <div class="h-5 w-100"></div>
 
       <!-- Technology & Promise Section -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full max-w-6xl">
+      <div class="row g-5 align-items-center w-100">
         <!-- Technology Stack -->
-        <div class="text-center lg:text-left flex flex-col items-center lg:items-start">
-          <h3 class="text-4xl font-black text-gray-800 mb-8 bg-gradient-to-r from-gray-800 to-blue-800 bg-clip-text text-transparent text-center w-full">
+        <div class="col-12 col-lg-6 text-center text-lg-start d-flex flex-column align-items-center align-items-lg-start">
+          <h3 class="display-5 fw-black text-dark mb-4 text-center w-100">
             Tecnología de Vanguardia
           </h3>
-          <p class="text-lg text-gray-600 mb-8 leading-relaxed text-center lg:text-left w-full">
+          <p class="fs-5 text-secondary mb-4 lh-base text-center text-lg-start w-100">
             Utilizamos el stack tecnológico más moderno para garantizar que tu sitio web sea 
-            <span class="font-semibold text-blue-600">rápido, seguro y escalable</span>.
+            <span class="fw-semibold text-primary">rápido, seguro y escalable</span>.
           </p>
           
-          <div class="grid grid-cols-2 gap-6 w-full">
+          <div class="row g-3 w-100">
             <div v-for="(tech, index) in technologies" :key="index" 
-                 class="flex items-center space-x-4 p-4 bg-white/50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 group justify-center lg:justify-start">
-              <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center transform transition-all duration-300 group-hover:rotate-12">
-                <span class="text-white font-bold text-sm flex items-center justify-center w-full h-full">{{ tech.icon }}</span>
-              </div>
-              <div class="text-center lg:text-left">
-                <div class="font-black text-gray-800">{{ tech.name }}</div>
-                <div class="text-sm text-gray-500">{{ tech.description }}</div>
+                 class="col-6 d-flex justify-content-center">
+              <div class="d-flex align-items-center p-3 bg-white bg-opacity-50 rounded-3 shadow transition-all duration-300 group hover-scale w-100"
+                   style="max-width: 280px;">
+                <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center me-3 transition-all duration-300 group-hover-rotate"
+                     style="width: 48px; height: 48px;">
+                  <span class="text-white fw-bold small d-flex align-items-center justify-content-center w-100 h-100">{{ tech.icon }}</span>
+                </div>
+                <div class="text-center text-lg-start">
+                  <div class="fw-black text-dark">{{ tech.name }}</div>
+                  <div class="small text-secondary">{{ tech.description }}</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
         
-        <!-- Our Promise - UBICADA MÁS ABAJO Y CON MÁS SEPARACIÓN -->
-        <div class="relative flex justify-center mt-8">
-          <div class="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden w-full max-w-md">
+        <!-- Our Promise -->
+        <div class="col-12 col-lg-6 d-flex justify-content-center mt-4">
+          <div class="bg-primary rounded-4 p-4 text-white shadow-lg position-relative overflow-hidden w-100"
+               style="max-width: 480px;">
             <!-- Background Pattern -->
-            <div class="absolute inset-0 opacity-10">
-              <div class="absolute inset-0" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 20px 20px;"></div>
+            <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10">
+              <div class="w-100 h-100" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 20px 20px;"></div>
             </div>
             
-            <div class="relative z-10">
-              <h4 class="text-3xl font-black mb-8 text-center w-full">Nuestra Promesa</h4>
-              <div class="h-5 w-full"></div>
-              <div class="space-y-8">
-                
+            <div class="position-relative z-2">
+              <h4 class="h2 fw-black mb-4 text-center w-100">Nuestra Promesa</h4>
+              <div class="h-3 w-100"></div>
+              <div class="d-flex flex-column gap-4">
                 <div v-for="(promise, index) in promises" :key="index" 
-                     class="flex items-center p-4 bg-white/10 rounded-2xl backdrop-blur-sm transform transition-all duration-300 hover:scale-105 group justify-center lg:justify-start">
-                     
-                  <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mr-4 transform transition-all duration-300 group-hover:rotate-12">
-                    <span class="text-white text-xl flex items-center justify-center w-full h-full">✓</span>
+                     class="d-flex align-items-center p-3 bg-white bg-opacity-10 rounded-3 transition-all duration-300 hover-scale group justify-content-center justify-content-lg-start">
+                  <div class="bg-white bg-opacity-20 rounded-3 d-flex align-items-center justify-content-center me-3 transition-all duration-300 group-hover-rotate"
+                       style="width: 48px; height: 48px;">
+                    <span class="text-white fs-5 d-flex align-items-center justify-content-center w-100 h-100">✓</span>
                   </div>
-                  
-                  <div class="text-center lg:text-left">
-                    <div class="font-bold text-lg">{{ promise.title }}</div>
-                    <div class="text-white/80 text-sm">{{ promise.description }}</div>
+                  <div class="text-center text-lg-start">
+                    <div class="fw-bold fs-6">{{ promise.title }}</div>
+                    <div class="text-white text-opacity-80 small">{{ promise.description }}</div>
                   </div>
-                  
                 </div>
-                
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      
-      <div class="h-10 w-full"></div>
+      <div class="h-5 w-100"></div>
 
-      <!-- CTA Section - MODIFICADA PARA CENTRAR VERTICALMENTE LOS TEXTOS -->
-      <div class="text-center w-full flex flex-col items-center justify-center">
-        <div class="bg-gradient-to-r from-blue-500/10 to-blue-600/10 rounded-3xl p-12 border border-blue-500/20 w-full max-w-4xl">
-          <div class="flex flex-col items-center justify-center space-y-8">
-            <h3 class="text-3xl md:text-4xl font-black text-gray-800 text-center w-full">
+      <!-- CTA Section -->
+      <div class="text-center w-100 d-flex flex-column align-items-center justify-content-center">
+        <div class="bg-primary bg-opacity-10 rounded-4 p-5 border border-primary border-opacity-20 w-100"
+             style="max-width: 800px;">
+          <div class="d-flex flex-column align-items-center justify-content-center gap-4">
+            <h3 class="h1 fw-black text-dark text-center w-100">
               ¿Listo para Transformar tu Presencia Digital?
             </h3>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto text-center">
+            <p class="fs-5 text-secondary mx-auto text-center">
               Únete a más de 200 empresas que ya confían en nosotros para llevar su negocio al siguiente nivel.
             </p>
-            <div class="h-5 w-full"></div>
+            <div class="h-3 w-100"></div>
             <button 
               @click="scrollToSection('contacto')"
-              class="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white font-black py-4 px-12 rounded-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-2xl hover:shadow-3xl text-lg relative overflow-hidden group"
+              class="btn btn-primary btn-lg fw-black py-3 px-5 rounded-3 transition-all duration-500 border-0 position-relative overflow-hidden"
             >
-              <span class="relative z-10 flex items-center justify-center">
+              <span class="position-relative z-2 d-flex align-items-center justify-content-center">
                 Comenzar Proyecto
-                <span class="ml-3 transform transition-transform duration-500 group-hover:translate-x-2">🚀</span>
+                <span class="ms-2 transition-all duration-500 group-hover-translate">🚀</span>
               </span>
-              <div class="absolute inset-0 bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              <div class="position-absolute top-0 start-0 w-100 h-100 bg-white bg-opacity-20 skew-x-12 translate-x-n100 transition-transform duration-1000"></div>
             </button>
           </div>
         </div>
@@ -219,3 +226,176 @@ const scrollToSection = (sectionId) => {
   }
 };
 </script>
+
+<style scoped>
+/* Estilos personalizados para mantener las animaciones y efectos */
+.top-n2 {
+  top: -0.5rem;
+}
+
+.start-n2 {
+  left: -0.5rem;
+}
+
+/* Animaciones */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(3deg);
+  }
+  66% {
+    transform: translateY(-10px) rotate(-3deg);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-15px) rotate(-2deg);
+  }
+  66% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 5s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Efectos blur personalizados */
+.blur-2 {
+  filter: blur(8px);
+}
+
+.blur-3 {
+  filter: blur(12px);
+}
+
+/* Efectos hover personalizados */
+.group:hover .group-hover-scale-rotate {
+  transform: scale(1.1) rotate(6deg);
+}
+
+.group:hover .group-hover-opacity {
+  opacity: 1 !important;
+}
+
+.group:hover .group-hover-line {
+  width: 4rem !important;
+}
+
+.group:hover .hover-scale {
+  transform: scale(1.05);
+}
+
+.group:hover .group-hover-rotate {
+  transform: rotate(12deg);
+}
+
+.group:hover .group-hover-translate {
+  transform: translateX(0.5rem);
+}
+
+/* Utilidades de transición */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+.duration-500 {
+  transition-duration: 500ms;
+}
+
+/* Transform utilities */
+.skew-x-12 {
+  transform: skewX(-12deg);
+}
+
+.translate-x-n100 {
+  transform: translateX(-100%);
+}
+
+/* Bordes redondeados personalizados */
+.rounded-4 {
+  border-radius: 1rem;
+}
+
+/* Utilidades de backdrop */
+.bg-opacity-80 {
+  --bs-bg-opacity: 0.8;
+}
+
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .display-4 {
+    font-size: 2.5rem !important;
+  }
+  
+  .display-5 {
+    font-size: 2rem !important;
+  }
+  
+  .h1 {
+    font-size: 2rem !important;
+  }
+}
+
+/* Asegurar altura consistente en las tarjetas de features */
+.d-flex.flex-column {
+  min-height: 100%;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+/* Mejoras de espaciado para móviles */
+@media (max-width: 576px) {
+  .py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  
+  .mb-5 {
+    margin-bottom: 3rem !important;
+  }
+}
+
+/* Efectos de hover para botones */
+.btn:hover .translate-x-n100 {
+  transform: translateX(100%) skewX(-12deg) !important;
+}
+
+/* Utilidades de opacidad */
+.text-opacity-80 {
+  --bs-text-opacity: 0.8;
+}
+</style>

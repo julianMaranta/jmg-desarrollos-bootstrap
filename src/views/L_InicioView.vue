@@ -64,27 +64,29 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-white overflow-hidden flex flex-col items-center">
+  <div class="min-vh-100 bg-white overflow-hidden d-flex flex-column align-items-center">
     <!-- Navigation -->
     <nav 
-      class="bg-white/95 backdrop-blur-xl text-gray-800 fixed w-full top-0 z-50 transition-all duration-500 border-b border-blue-200/50 flex justify-center"
-      :class="isScrolled ? 'py-3 shadow-2xl' : 'py-5'"
+      class="bg-white fixed-top w-100 z-50 transition-all duration-500 border-bottom border-primary-subtle d-flex justify-content-center"
+      :class="isScrolled ? 'py-3 shadow-lg' : 'py-4'"
+      style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.95);"
     >
-      <div class="w-full max-w-7xl mx-auto px-6">
-        <div class="flex justify-between items-center">
-          <!-- Logo - Más separación entre logo y texto -->
-          <div class="flex items-center space-x-6 group cursor-pointer" @click="scrollToSection('inicio')">
-            <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-              <span class="text-white font-bold text-lg">JMG</span>
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <!-- Logo -->
+          <div class="d-flex align-items-center gap-3 group cursor-pointer" @click="scrollToSection('inicio')" style="cursor: pointer;">
+            <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center transition-all group-hover-scale" 
+                 style="width: 48px; height: 48px; background: linear-gradient(135deg, #0d6efd, #0a58ca);">
+              <span class="text-white fw-bold">JMG</span>
             </div>
             <div class="text-center">
-              <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">JMG Desarrollos</span>
-              <div class="h-1 w-0 bg-gradient-to-r from-blue-600 to-blue-800 transition-all duration-500 group-hover:w-full mt-1 mx-auto"></div>
+              <span class="h5 fw-bold text-primary mb-0">JMG Desarrollos</span>
+              <div class="bg-primary transition-all group-hover-line mx-auto mt-1" style="height: 2px; width: 0;"></div>
             </div>
           </div>
           
-          <!-- Desktop Menu - Más espacio entre items -->
-          <ul class="hidden md:flex space-x-12 items-center">
+          <!-- Desktop Menu -->
+          <ul class="d-none d-md-flex list-unstyled align-items-center gap-4 mb-0">
             <li 
               v-for="item in [
                 { id: 'inicio', name: 'Inicio' },
@@ -94,46 +96,52 @@ onUnmounted(() => {
               ]" 
               :key="item.id"
               @click="scrollToSection(item.id)"
-              class="cursor-pointer transition-all duration-500 relative group"
-              :class="activeSection === item.id ? 'text-blue-600 scale-110' : 'text-gray-600 hover:text-blue-500'"
+              class="cursor-pointer transition-all position-relative"
+              :class="activeSection === item.id ? 'text-primary scale-110' : 'text-secondary'"
+              style="cursor: pointer;"
             >
-              <a class="font-semibold text-lg relative z-10 px-2 py-1">{{ item.name }}</a>
+              <a class="fw-semibold position-relative z-2 px-2 py-1 text-decoration-none" 
+                 :class="activeSection === item.id ? 'text-primary' : 'text-secondary'">
+                {{ item.name }}
+              </a>
               <div 
-                class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 h-1 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full transition-all duration-500 origin-center"
-                :class="activeSection === item.id ? 'w-full' : 'w-0 group-hover:w-full'"
+                class="position-absolute bottom-0 start-50 translate-middle-x bg-primary rounded-pill transition-all"
+                :class="activeSection === item.id ? 'w-100' : 'w-0'"
+                style="height: 2px; background: linear-gradient(to right, #0d6efd, #0a58ca);"
               ></div>
-              <div class="absolute inset-0 bg-blue-600/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-500"></div>
             </li>
             <li 
               @click="scrollToSection('contacto')" 
-              class="cursor-pointer bg-gradient-to-r from-blue-600 to-blue-800 text-white hover:from-blue-700 hover:to-blue-900 px-10 py-3 rounded-xl transition-all duration-500 transform hover:scale-105 font-semibold shadow-lg hover:shadow-xl relative overflow-hidden group ml-4"
+              class="cursor-pointer bg-primary text-white px-4 py-2 rounded-3 transition-all fw-semibold shadow position-relative overflow-hidden"
+              style="background: linear-gradient(to right, #0d6efd, #0a58ca); cursor: pointer;"
             >
-              <span class="relative z-10">Contacto</span>
-              <div class="absolute inset-0 bg-white/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+              <span class="position-relative z-2">Contacto</span>
             </li>
           </ul>
 
           <!-- Mobile Menu Button -->
           <button 
             @click="toggleMenu" 
-            class="md:hidden flex flex-col justify-center items-center w-10 h-10 cursor-pointer relative z-60 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg shadow-lg"
+            class="d-md-none btn btn-primary p-2 position-relative z-5 border-0"
+            style="background: linear-gradient(135deg, #0d6efd, #0a58ca); width: 40px; height: 40px;"
             aria-label="Menú"
           >
-            <span class="w-6 h-0.5 bg-white mb-1 rounded transition-all duration-500" 
-                  :class="{ 'rotate-45 translate-y-1.5': isMenuOpen }"></span>
-            <span class="w-6 h-0.5 bg-white mb-1 rounded transition-all duration-500" 
+            <span class="d-block w-75 h-1 bg-white mb-1 rounded transition-all position-absolute top-25 start-50 translate-middle" 
+                  :class="{ 'rotate-45 top-50': isMenuOpen }"></span>
+            <span class="d-block w-75 h-1 bg-white mb-1 rounded transition-all position-absolute top-50 start-50 translate-middle" 
                   :class="{ 'opacity-0': isMenuOpen }"></span>
-            <span class="w-6 h-0.5 bg-white rounded transition-all duration-500" 
-                  :class="{ '-rotate-45 -translate-y-1.5': isMenuOpen }"></span>
+            <span class="d-block w-75 h-1 bg-white rounded transition-all position-absolute bottom-25 start-50 translate-middle" 
+                  :class="{ 'rotate-[-45deg] top-50': isMenuOpen }"></span>
           </button>
         </div>
 
         <!-- Mobile Menu -->
         <div 
           v-if="isMobile && isMenuOpen" 
-          class="md:hidden bg-white/95 backdrop-blur-xl border-t border-blue-200/50 py-8 animate-slide-in-down rounded-b-2xl shadow-2xl mt-2 text-center"
+          class="d-md-none bg-white border-top border-primary-subtle py-4 rounded-bottom-3 shadow-lg mt-2 text-center"
+          style="backdrop-filter: blur(10px);"
         >
-          <ul class="space-y-6">
+          <ul class="list-unstyled mb-0">
             <li 
               v-for="item in [
                 { id: 'inicio', name: 'Inicio' },
@@ -143,20 +151,24 @@ onUnmounted(() => {
               ]" 
               :key="item.id"
               @click="scrollToSection(item.id)"
-              class="cursor-pointer transition-all duration-500 py-4 px-6 rounded-lg mx-4"
-              :class="activeSection === item.id ? 'bg-blue-600/10 text-blue-600 scale-105' : 'text-gray-600 hover:bg-blue-50'"
+              class="cursor-pointer transition-all py-3 px-4 rounded-3 mx-2"
+              :class="activeSection === item.id ? 'bg-primary bg-opacity-10 text-primary' : 'text-secondary'"
+              style="cursor: pointer;"
             >
-              <a class="font-semibold text-lg flex items-center justify-center">
-                <div class="w-2 h-2 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full mr-4 transition-all duration-500" 
-                     :class="activeSection === item.id ? 'scale-100' : 'scale-0'"></div>
+              <a class="fw-semibold d-flex align-items-center justify-content-center text-decoration-none"
+                 :class="activeSection === item.id ? 'text-primary' : 'text-secondary'">
+                <div class="bg-primary rounded-circle me-3 transition-all" 
+                     :class="activeSection === item.id ? 'scale-100' : 'scale-0'"
+                     style="width: 8px; height: 8px;"></div>
                 {{ item.name }}
               </a>
             </li>
             <li 
               @click="scrollToSection('contacto')" 
-              class="cursor-pointer bg-gradient-to-r from-blue-600 to-blue-800 text-white hover:from-blue-700 hover:to-blue-900 px-8 py-4 rounded-lg transition-all duration-500 transform hover:scale-105 font-semibold shadow-lg mt-6 mx-4 text-center"
+              class="cursor-pointer bg-primary text-white px-4 py-3 rounded-3 transition-all fw-semibold shadow mt-3 mx-2 text-center border-0"
+              style="background: linear-gradient(to right, #0d6efd, #0a58ca); cursor: pointer;"
             >
-              <a>Contacto</a>
+              <a class="text-white text-decoration-none">Contacto</a>
             </li>
           </ul>
         </div>
@@ -164,7 +176,7 @@ onUnmounted(() => {
     </nav>
 
     <!-- Main Content -->
-    <main class="pt-16 w-full flex flex-col items-center">
+    <main class="pt-5 w-100 d-flex flex-column align-items-center">
       <HeaderInicio />
       <NuestrosServicios />
       <PorqueElegirnos />
@@ -174,115 +186,123 @@ onUnmounted(() => {
     </main>
 
     <!-- Floating Action Buttons -->
-    <div class="fixed bottom-8 right-8 z-40 space-y-4">
+    <div class="fixed-bottom end-0 p-3 z-40 d-flex flex-column gap-3">
       <!-- WhatsApp Button -->
       <button 
-        class="w-16 h-16 bg-green-500 hover:bg-green-600 text-white rounded-2xl shadow-2xl flex items-center justify-center transition-all duration-500 transform hover:scale-110 hover:rotate-12 group animate-bounce-slow"
+        class="btn btn-success rounded-3 shadow-lg d-flex align-items-center justify-content-center transition-all"
+        style="width: 64px; height: 64px;"
         aria-label="WhatsApp"
       >
-        <span class="text-2xl">💬</span>
-        <div class="absolute inset-0 bg-white/20 rounded-2xl scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+        <span class="fs-5">💬</span>
       </button>
       
       <!-- Scroll to Top -->
       <button 
         @click="scrollToSection('inicio')"
-        class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white rounded-2xl shadow-2xl flex items-center justify-center transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 group"
+        class="btn btn-primary rounded-3 shadow-lg d-flex align-items-center justify-content-center transition-all border-0"
+        style="width: 64px; height: 64px; background: linear-gradient(135deg, #0d6efd, #0a58ca);"
         aria-label="Volver arriba"
       >
-        <span class="text-2xl transform transition-transform duration-500 group-hover:-translate-y-1">↑</span>
-        <div class="absolute inset-0 bg-white/10 rounded-2xl scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+        <span class="fs-5">↑</span>
       </button>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white py-16 w-full flex justify-center relative overflow-hidden">
+    <footer class="bg-dark text-white py-5 w-100 position-relative overflow-hidden">
       <!-- Background Elements -->
-      <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute -top-20 -right-20 w-40 h-40 bg-blue-600/10 rounded-full animate-pulse-slow"></div>
-        <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-blue-500/10 rounded-full animate-pulse-slower"></div>
-        <div class="absolute top-1/2 left-1/4 w-8 h-8 bg-blue-400/20 rounded-full animate-float"></div>
-        <div class="absolute bottom-1/3 right-1/4 w-6 h-6 bg-blue-300/20 rounded-full animate-float-delayed"></div>
+      <div class="position-absolute top-0 start-0 w-100 h-100 overflow-hidden">
+        <div class="position-absolute bg-primary bg-opacity-10 rounded-circle" 
+             style="width: 160px; height: 160px; top: -80px; right: -80px;"></div>
+        <div class="position-absolute bg-primary bg-opacity-10 rounded-circle" 
+             style="width: 160px; height: 160px; bottom: -80px; left: -80px;"></div>
+        <div class="position-absolute top-50 start-25 bg-primary bg-opacity-20 rounded-circle animate-float"
+             style="width: 32px; height: 32px;"></div>
+        <div class="position-absolute bottom-33 end-25 bg-primary bg-opacity-20 rounded-circle animate-float-delayed"
+             style="width: 24px; height: 24px;"></div>
       </div>
       
-      <div class="w-full max-w-7xl mx-auto px-4 relative z-10">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+      <div class="container position-relative z-2">
+        <div class="row g-4 text-center text-md-start">
           <!-- Logo y Descripción -->
-          <div class="flex flex-col items-center md:items-start">
-            <div class="flex items-center space-x-6 justify-center md:justify-start mb-6 group cursor-pointer" @click="scrollToSection('inicio')">
-              <div class="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-                <span class="text-white font-bold text-xl">JMG</span>
+          <div class="col-12 col-md-3 d-flex flex-column align-items-center align-items-md-start">
+            <div class="d-flex align-items-center gap-3 justify-content-center justify-content-md-start mb-3 group cursor-pointer" @click="scrollToSection('inicio')" style="cursor: pointer;">
+              <div class="bg-primary rounded-3 d-flex align-items-center justify-content-center"
+                   style="width: 56px; height: 56px; background: linear-gradient(135deg, #0d6efd, #0a58ca);">
+                <span class="text-white fw-bold">JMG</span>
               </div>
-              <span class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text text-transparent">JMG Desarrollos</span>
+              <span class="h4 fw-bold text-info mb-0">JMG Desarrollos</span>
             </div>
-            <p class="text-gray-400 mb-6 max-w-xs text-center md:text-left leading-relaxed">
+            <p class="text-secondary mb-3 text-center text-md-start">
               Creamos soluciones web innovadoras que impulsan el crecimiento de tu negocio con tecnología de vanguardia.
             </p>
-            <p class="text-gray-500 text-sm text-center md:text-left">&copy; 2024 JMG Desarrollos. Todos los derechos reservados.</p>
+            <p class="text-secondary-emphasis small text-center text-md-start">&copy; 2024 JMG Desarrollos. Todos los derechos reservados.</p>
           </div>
           
           <!-- Enlaces rápidos -->
-          <div class="flex flex-col items-center md:items-start">
-            <h3 class="text-lg font-bold mb-6 text-transparent bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text">Enlaces Rápidos</h3>
-            <ul class="space-y-3">
-              <li v-for="link in ['inicio', 'servicios', 'proceso', 'testimonios']" :key="link">
+          <div class="col-12 col-md-3 d-flex flex-column align-items-center align-items-md-start">
+            <h3 class="h5 fw-bold mb-3 text-info">Enlaces Rápidos</h3>
+            <ul class="list-unstyled">
+              <li v-for="link in ['inicio', 'servicios', 'proceso', 'testimonios']" :key="link" class="mb-2">
                 <a 
                   @click="scrollToSection(link)" 
-                  class="text-gray-400 hover:text-white transition-all duration-500 cursor-pointer transform hover:translate-x-2 inline-block group"
+                  class="text-secondary text-decoration-none transition-all d-flex align-items-center justify-content-center justify-content-md-start"
+                  style="cursor: pointer;"
                 >
-                  <span class="flex items-center justify-center md:justify-start">
-                    <div class="w-1 h-1 bg-gradient-to-r from-blue-400 to-blue-300 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
-                    {{ link.charAt(0).toUpperCase() + link.slice(1) }}
-                  </span>
+                  <div class="bg-info rounded-circle me-2 opacity-0 transition-all group-hover-opacity" style="width: 4px; height: 4px;"></div>
+                  {{ link.charAt(0).toUpperCase() + link.slice(1) }}
                 </a>
               </li>
             </ul>
           </div>
           
           <!-- Contacto -->
-          <div class="flex flex-col items-center md:items-start">
-            <h3 class="text-lg font-bold mb-6 text-transparent bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text">Contacto</h3>
-            <div class="space-y-4 text-gray-400 flex flex-col items-center md:items-start">
-              <p class="flex items-center transition-all duration-500 hover:text-white transform hover:translate-x-2 group justify-center md:justify-start">
-                <span class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-500">📞</span>
+          <div class="col-12 col-md-3 d-flex flex-column align-items-center align-items-md-start">
+            <h3 class="h5 fw-bold mb-3 text-info">Contacto</h3>
+            <div class="d-flex flex-column gap-3 text-secondary align-items-center align-items-md-start">
+              <p class="d-flex align-items-center transition-all mb-0 justify-content-center justify-content-md-start group">
+                <span class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3 text-white transition-all group-hover-scale"
+                      style="width: 32px; height: 32px; background: linear-gradient(135deg, #0d6efd, #0a58ca);">📞</span>
                 +54 9 11 5527-1430
               </p>
-              <p class="flex items-center transition-all duration-500 hover:text-white transform hover:translate-x-2 group justify-center md:justify-start">
-                <span class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-500">✉️</span>
+              <p class="d-flex align-items-center transition-all mb-0 justify-content-center justify-content-md-start group">
+                <span class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3 text-white transition-all group-hover-scale"
+                      style="width: 32px; height: 32px; background: linear-gradient(135deg, #0d6efd, #0a58ca);">✉️</span>
                 contacto@jmgdesarrollos.com
               </p>
-              <p class="flex items-center transition-all duration-500 hover:text-white transform hover:translate-x-2 group justify-center md:justify-start">
-                <span class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-500">📍</span>
+              <p class="d-flex align-items-center transition-all mb-0 justify-content-center justify-content-md-start group">
+                <span class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3 text-white transition-all group-hover-scale"
+                      style="width: 32px; height: 32px; background: linear-gradient(135deg, #0d6efd, #0a58ca);">📍</span>
                 Buenos Aires, Argentina
               </p>
             </div>
           </div>
           
           <!-- Redes sociales -->
-          <div class="flex flex-col items-center md:items-start">
-            <h3 class="text-lg font-bold mb-6 text-transparent bg-gradient-to-r from-blue-400 to-blue-300 bg-clip-text">Síguenos</h3>
-            <div class="flex justify-center md:justify-start space-x-3">
+          <div class="col-12 col-md-3 d-flex flex-column align-items-center align-items-md-start">
+            <h3 class="h5 fw-bold mb-3 text-info">Síguenos</h3>
+            <div class="d-flex justify-content-center justify-content-md-start gap-2">
               <a 
                 v-for="(social, index) in [
-                  { name: 'FB', icon: '📘', color: 'from-blue-600 to-blue-800' },
-                  { name: 'IG', icon: '📷', color: 'from-blue-500 to-blue-700' },
-                  { name: 'IN', icon: '💼', color: 'from-blue-700 to-blue-900' },
-                  { name: 'WA', icon: '💚', color: 'from-blue-600 to-blue-800' }
+                  { name: 'FB', icon: '📘', color: 'btn-primary' },
+                  { name: 'IG', icon: '📷', color: 'btn-primary' },
+                  { name: 'IN', icon: '💼', color: 'btn-primary' },
+                  { name: 'WA', icon: '💚', color: 'btn-primary' }
                 ]" 
                 :key="social.name" 
                 href="#" 
-                class="w-12 h-12 bg-gradient-to-br rounded-xl flex items-center justify-center transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 shadow-lg"
+                class="btn rounded-2 d-flex align-items-center justify-content-center transition-all border-0"
                 :class="social.color"
+                style="width: 48px; height: 48px;"
               >
-                <span class="text-white font-bold text-lg">{{ social.icon }}</span>
+                <span class="text-white">{{ social.icon }}</span>
               </a>
             </div>
           </div>
         </div>
         
         <!-- Divider -->
-        <div class="border-t border-blue-700/50 mt-12 pt-8 text-center">
-          <p class="text-gray-500 text-sm">
+        <div class="border-top border-primary border-opacity-50 mt-4 pt-4 text-center">
+          <p class="text-secondary-emphasis small mb-0">
             Hecho con ❤️ por JMG Desarrollos - Transformando ideas en realidad digital
           </p>
         </div>
@@ -290,3 +310,177 @@ onUnmounted(() => {
     </footer>
   </div>
 </template>
+
+<style scoped>
+/* Estilos personalizados para mantener las animaciones y efectos */
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+.group:hover .group-hover-scale {
+  transform: scale(1.1) rotate(6deg);
+}
+
+.group:hover .group-hover-line {
+  width: 100% !important;
+}
+
+.group:hover .group-hover-scale {
+  transform: scale(1.1);
+}
+
+.group:hover .group-hover-opacity {
+  opacity: 1 !important;
+}
+
+.scale-110 {
+  transform: scale(1.1);
+}
+
+.scale-0 {
+  transform: scale(0);
+}
+
+.scale-100 {
+  transform: scale(1);
+}
+
+.rotate-45 {
+  transform: rotate(45deg);
+}
+
+
+
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Posicionamiento utilities */
+.top-25 {
+  top: 25%;
+}
+
+.top-50 {
+  top: 50%;
+}
+
+.bottom-25 {
+  bottom: 25%;
+}
+
+.bottom-33 {
+  bottom: 33%;
+}
+
+.start-25 {
+  left: 25%;
+}
+
+.start-50 {
+  left: 50%;
+}
+
+.end-25 {
+  right: 25%;
+}
+
+.translate-middle {
+  transform: translate(-50%, -50%);
+}
+
+.translate-middle-x {
+  transform: translateX(-50%);
+}
+
+.z-40 {
+  z-index: 40;
+}
+
+.z-50 {
+  z-index: 50;
+}
+
+/* Animaciones personalizadas */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(3deg);
+  }
+  66% {
+    transform: translateY(-10px) rotate(-3deg);
+  }
+}
+
+@keyframes float-delayed {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-15px) rotate(-2deg);
+  }
+  66% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulse-slower {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.02);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 5s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-pulse-slower {
+  animation: pulse-slower 6s ease-in-out infinite;
+}
+
+/* Background opacity utilities */
+.bg-opacity-10 {
+  --bs-bg-opacity: 0.1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pt-5 {
+    padding-top: 4rem !important;
+  }
+}
+
+/* Hover effects for footer links */
+.group:hover {
+  transform: translateX(0.5rem);
+}
+</style>
